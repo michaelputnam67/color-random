@@ -1,5 +1,5 @@
 * {
-	border: 2px solid rgb(0, 0, 0);
+	border: 2px dotted red;
 	font-family: 'Varela Round', sans-serif;
 }
 
@@ -26,8 +26,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 44pt;
-	color: red;
+	font-size: 60pt;
 
 }
 
@@ -51,6 +50,7 @@
 	height: 70%;
 	width: 90%;
 	background-color: pink;
+	border:4px solid black;
 }
 
 .palettes__hex-key {
@@ -58,7 +58,17 @@
 	width: 90%;
 	text-align: center;
 	font-size: 22pt;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+.lock{
+	width: 30px;
+	height: 30px;
+	content: url(./assets/images/unlocked-lock.png);
+	margin: 5px;
+	}
 
 .main__buttons {
 	height: 33%;
@@ -84,6 +94,7 @@
 }
 
 .sidebar {
+	border-left: 4px solid black;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -93,8 +104,10 @@
 }
 
 .sidebar__header {
+	font-size: 20pt;
 	width: 100%;
 	text-align: center;
+	border-bottom: 4px solid black;
 }
 
 .sidebar__new-instance {
