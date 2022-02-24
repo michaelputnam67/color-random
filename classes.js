@@ -15,7 +15,6 @@ class Color {
 	}
 }
 
-
 class Palette {
 	constructor() {
 		this.colors = [new Color(), new Color(), new Color(), new Color(), new Color()]
