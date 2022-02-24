@@ -20,6 +20,8 @@ newPalette.addEventListener('click', function(){
 
 function locked(event){
 	var index = event.target.id
+	if (!index) return;
+
 	if(!currentPalette.colors[index].locked){
 		currentPalette.makeLocked(index)
 		lockImg[index].style.content = "url(./assets/images/Locked-lock.png)"
