@@ -1,7 +1,7 @@
 class Color {
 	constructor() {
 		this.hexCode = this.makeHex();
-		this.locked = false;		
+		this.locked = false;
 	}
 
 	makeHex() {
@@ -24,4 +24,7 @@ class Palette {
 	makeLocked(id) {
 		this.colors[id].locked = true;
 	}
-}	
+	makeUnlocked(id){
+		this.colors[id].locked = false;
+	}
+}
