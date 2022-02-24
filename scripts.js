@@ -6,8 +6,8 @@ var paletteBox = document.querySelector('.palettes')
 var paletteId = document.querySelectorAll('.palettes__color')
 var lockImg = document.querySelectorAll('.lock')
 
-var currentPalette = new Palette();
-generateNewPalette()
+var currentPalette;
+newPaletteInstance()
 
 // Event Listeners:
 paletteBox.addEventListener('click', function(event){
@@ -29,12 +29,15 @@ function locked(event){
 	}
 }
 
-function generateNewPalette() {
-	 currentPalette = new Palette();
-	for(var i = 0; i < currentColors.length; i++) {
-		console.log(currentPalette.colors[i].locked)
-		if(!currentPalette.colors[i].locked){
+function newPaletteInstance() {
+	currentPalette = new Palette();
+	generateNewPalette()
+}
 
+function generateNewPalette() {
+	for(var i = 0; i < currentColors.length; i++) {
+		if(!currentPalette.colors[i].locked) {
+		currentPalette.colors[i] = new Color();
 		currentColors[i].style.backgroundColor = currentPalette.colors[i].hexCode;
 		displayedHexCode[i].innerText = currentPalette.colors[i].hexCode;
 		currentColors[i].id = currentPalette.colors.indexOf(currentPalette.colors[i])
