@@ -17,19 +17,11 @@ class Color {
 
 
 class Palette {
-	constructor(color) {
+	constructor() {
 		this.colors = [new Color(), new Color(), new Color(), new Color(), new Color()]
-		// this.colors1 = new Color();
-		// this.colors2 = new Color();
-		// this.colors3 = new Color();
-		// this.colors4 = new Color();
-		// this.colors5 = new Color();
 		this.id = Date.now();
-		console.log(this)
 	}
-	replaceColor() {
-
+	makeLocked(id) {
+		this.colors[id].locked = true;
 	}
-
-
 }	
