@@ -1,4 +1,4 @@
-// Query Selectors:
+//~~~~~~~~~~~~~~~~~~~~~~Query Selectors~~~~~~~~~~~~~~~~~~~~~~~~
 var newPalette = document.querySelector('.buttons__new-palette')
 var currentColors = document.querySelectorAll('.palettes__current')
 var displayedHexCode = document.querySelectorAll('.hex-code')
@@ -11,14 +11,13 @@ var miniPalette = document.getElementsByClassName('mini__palette')
 var sidebarInstance = document.getElementsByClassName('sidebar__new-instance')
 var trashIcon = document.querySelector(".mini__trashcan")
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~Global Variables~~~~~~~~~~~~~~~~~~~~~~
 var currentPalette;
-window.addEventListener('load', newPaletteInstance)
-
 var savedPalettes = []
 var previousLockedColors = [null, null, null, null, null]
 
-// Event Listeners:
+//~~~~~~~~~~~~~~~~~~~~~~~~Event listeners~~~~~~~~~~~~~~~~~~~~~~
+window.addEventListener('load', newPaletteInstance)
 
 sidebar.addEventListener('click', function(event){
 	deleteSaved(event)
@@ -38,24 +37,25 @@ savePaletteButton.addEventListener('click', function() {
 	addMiniPalettesHTML();
 })
 
-function deleteSaved(event){
-	var itemToDelete = parseInt(event.target.id)
-	console.log(savedPalettes)
-	for(var i = 0; i < savedPalettes.length; i++){
-		if(itemToDelete === savedPalettes[i].id){
-			savedPalettes.splice(i,1)
-			event.target.remove(sidebar)
-		}
-	}
-	console.log(savedPalettes)
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Functions~~~~~~~~~~~~~~~~~~~~~~~~~
+function newPaletteInstance() {
+	var color1 =  previousLockedColors[0] || new Color();
+	var color2 =  previousLockedColors[1] || new Color();
+	var color3 =  previousLockedColors[2] || new Color();
+	var color4 =  previousLockedColors[3] || new Color();
+	var color5 =  previousLockedColors[4] || new Color();
+	currentPalette = new Palette([color1, color2, color3, color4, color5]);
+	generateNewPalette()
 }
 
-function saveCurrentPalette() {
-	savePaletteButton.disabled = true;
-	// if(!savedPalettes.includes(currentPalette)) {
-		savedPalettes.unshift(currentPalette)
-	// }
+function generateNewPalette() {
+	for(var i = 0; i < currentColors.length; i++) {
+		if(!currentPalette.colors[i].locked) {
+			currentColors[i].style.backgroundColor = currentPalette.colors[i].hexCode;
+			displayedHexCode[i].innerText = currentPalette.colors[i].hexCode;
+			currentColors[i].id = currentPalette.colors.indexOf(currentPalette.colors[i])
+		}
+	}
 }
 
 function locked(event){
@@ -72,16 +72,6 @@ function locked(event){
 	}
 }
 
-function newPaletteInstance() {
-	var color1 =  previousLockedColors[0] || new Color();
-	var color2 =  previousLockedColors[1] || new Color();
-	var color3 =  previousLockedColors[2] || new Color();
-	var color4 =  previousLockedColors[3] || new Color();
-	var color5 =  previousLockedColors[4] || new Color();
-	currentPalette = new Palette([color1, color2, color3, color4, color5]);
-	generateNewPalette()
-}
-
 function storeLockedPalettes() {
 	for(var i = 0; i < currentColors.length; i++) {
 		if(currentPalette.colors[i].locked && !previousLockedColors.includes(currentPalette.colors[i])) {
@@ -91,17 +81,12 @@ function storeLockedPalettes() {
 }
 
 function removeLockedPalettes(index) {
-			previousLockedColors.splice(index, 1, null)
-		}
+	previousLockedColors.splice(index, 1, null)
+}
 
-function generateNewPalette() {
-	for(var i = 0; i < currentColors.length; i++) {
-		if(!currentPalette.colors[i].locked) {
-		currentColors[i].style.backgroundColor = currentPalette.colors[i].hexCode;
-		displayedHexCode[i].innerText = currentPalette.colors[i].hexCode;
-		currentColors[i].id = currentPalette.colors.indexOf(currentPalette.colors[i])
-		}
-	}
+function saveCurrentPalette() {
+	savePaletteButton.disabled = true;
+	savedPalettes.unshift(currentPalette)
 }
 
 function addMiniPalettesHTML(){
@@ -113,7 +98,17 @@ function addMiniPalettesHTML(){
 	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[3].hexCode}'></section>
 	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[4].hexCode}'></section>
 	<section class="mini__trashcan" id='${savedPalettes[0].id}'></section>
-  </section>`
+	</section>`
+}
+
+function deleteSaved(event){
+	var itemToDelete = parseInt(event.target.id)
+	for(var i = 0; i < savedPalettes.length; i++){
+		if(itemToDelete === savedPalettes[i].id){
+			savedPalettes.splice(i, 1)
+			event.target.parentElement.remove()
+		}
+	}
 }
 
 function savePaletteToggle() {
