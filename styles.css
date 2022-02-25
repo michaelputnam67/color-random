@@ -133,3 +133,7 @@
 .mini__trashcan:hover {
 	content: url(./assets/images/trashcan2.png)
 }
+
+.hidden{
+	display: none;
+}
