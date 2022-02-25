@@ -9,7 +9,7 @@ var savePaletteButton = document.querySelector('.buttons__save-palette')
 var sidebar = document.querySelector('.sidebar')
 var miniPalette = document.getElementsByClassName('mini__palette')
 var sidebarInstance = document.getElementsByClassName('sidebar__new-instance')
-// var tinyPalette = document.getElementsByClassName('mini__palette')
+var trashIcon = document.querySelector(".mini__trashcan")
 
 
 var currentPalette;
@@ -19,6 +19,11 @@ var savedPalettes = []
 var previousLockedColors = [null, null, null, null, null]
 
 // Event Listeners:
+
+sidebar.addEventListener('click', function(event){
+	deleteSaved(event)
+});
+
 paletteBox.addEventListener('click', function(event){
 	locked(event);
 });
@@ -28,22 +33,29 @@ newPalette.addEventListener('click', function(){
 	savePaletteToggle();
 })
 
-savePaletteButton.addEventListener('click', function() {	
+savePaletteButton.addEventListener('click', function() {
 	saveCurrentPalette();
 	addMiniPalettesHTML();
-	// displayMiniPalettes();
 })
+
+function deleteSaved(event){
+	var itemToDelete = parseInt(event.target.id)
+	console.log(savedPalettes)
+	for(var i = 0; i < savedPalettes.length; i++){
+		if(itemToDelete === savedPalettes[i].id){
+			savedPalettes.splice(i,1)
+			event.target.remove(sidebar)
+		}
+	}
+	console.log(savedPalettes)
+
+}
 
 function saveCurrentPalette() {
 	savePaletteButton.disabled = true;
-	if(!savedPalettes.includes(currentPalette)) {
-		// for(var i = 0; i < currentPalette.length; i++) {
-		// 	if(currentPalette.colors[i].locked) {
-		// 		currentPalette.colors[i].locked = false;
-		// 	}
-		// }
+	// if(!savedPalettes.includes(currentPalette)) {
 		savedPalettes.unshift(currentPalette)
-	}
+	// }
 }
 
 function locked(event){
@@ -107,21 +119,5 @@ function addMiniPalettesHTML(){
 function savePaletteToggle() {
 	if(savePaletteButton.disabled) {
 		savePaletteButton.disabled = false;
-	} 
+	}
 }
-
-
-
-// function displayMiniPalettes(test){
-// 				test[1].style.backgroundColor = savedPalettes[0].colors[0].hexCode;
-// 				test[3].style.backgroundColor = savedPalettes[0].colors[1].hexCode;
-// 				test[5].style.backgroundColor = savedPalettes[0].colors[2].hexCode;
-// 				test[7].style.backgroundColor = savedPalettes[0].colors[3].hexCode;
-// 				test[9].style.backgroundColor = savedPalettes[0].colors[4].hexCode;
-// 			}
-
-// 	function test() {
-// 		console.log(sidebarInstance)
-// 			var test = sidebarInstance[sidebarInstance.length-1].childNodes
-// 			displayMiniPalettes(test)
-// 	}
