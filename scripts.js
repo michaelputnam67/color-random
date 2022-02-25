@@ -5,10 +5,11 @@ var displayedHexCode = document.querySelectorAll('.hex-code')
 var paletteBox = document.querySelector('.palettes')
 var paletteId = document.querySelectorAll('.palettes__color')
 var lockImg = document.querySelectorAll('.lock')
-var savePaletteButton = document.querySelector('.buttons__save-palette');
+var savePaletteButton = document.querySelector('.buttons__save-palette')
 var sidebar = document.querySelector('.sidebar')
 var miniPalette = document.getElementsByClassName('mini__palette')
-var sidebarInstance = document.querySelectorAll('.sidebar__new-instance')
+var sidebarInstance = document.getElementsByClassName('sidebar__new-instance')
+// var tinyPalette = document.getElementsByClassName('mini__palette')
 
 
 var currentPalette;
@@ -23,17 +24,18 @@ paletteBox.addEventListener('click', function(event){
 });
 
 newPalette.addEventListener('click', function(){
-	newPaletteInstance()
+	newPaletteInstance();
+	savePaletteToggle();
 })
 
-savePaletteButton.addEventListener('click', function() {
+savePaletteButton.addEventListener('click', function() {	
 	saveCurrentPalette();
 	addMiniPalettesHTML();
-	displayMiniPalettes();
-	console.log(sidebarInstance);
+	// displayMiniPalettes();
 })
 
 function saveCurrentPalette() {
+	savePaletteButton.disabled = true;
 	if(!savedPalettes.includes(currentPalette)) {
 		// for(var i = 0; i < currentPalette.length; i++) {
 		// 	if(currentPalette.colors[i].locked) {
@@ -91,29 +93,35 @@ function generateNewPalette() {
 }
 
 function addMiniPalettesHTML(){
-	var newInnerHTML = `
+	sidebar.innerHTML += `
 	<section class="sidebar__new-instance">
-	<section class="mini__palette"></section>
-	<section class="mini__palette"></section>
-	<section class="mini__palette"></section>
-	<section class="mini__palette"></section>
-	<section class="mini__palette"></section>
-	<section class="mini__trashcan"></section>
+	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[0].hexCode}'></section>
+	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[1].hexCode}'></section>
+	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[2].hexCode}'></section>
+	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[3].hexCode}'></section>
+	<section class="mini__palette" style='background-color:${savedPalettes[0].colors[4].hexCode}'></section>
+	<section class="mini__trashcan" id='${savedPalettes[0].id}'></section>
   </section>`
-
-  sidebar.innerHTML += newInnerHTML;
-  for (var i = 0; i < 5; i++) {
-	  
-	  miniPalette[i].style.backgroundColor = savedPalettes[0].colors[i].hexCode;
-	}
-
 }
 
-function displayMiniPalettes(){
-	for (var i = 0; i < 5; i++) {
-
-	miniPalette[i].style.backgroundColor = savedPalettes[0].colors[i].hexCode;
-	}
+function savePaletteToggle() {
+	if(savePaletteButton.disabled) {
+		savePaletteButton.disabled = false;
+	} 
 }
-	
 
+
+
+// function displayMiniPalettes(test){
+// 				test[1].style.backgroundColor = savedPalettes[0].colors[0].hexCode;
+// 				test[3].style.backgroundColor = savedPalettes[0].colors[1].hexCode;
+// 				test[5].style.backgroundColor = savedPalettes[0].colors[2].hexCode;
+// 				test[7].style.backgroundColor = savedPalettes[0].colors[3].hexCode;
+// 				test[9].style.backgroundColor = savedPalettes[0].colors[4].hexCode;
+// 			}
+
+// 	function test() {
+// 		console.log(sidebarInstance)
+// 			var test = sidebarInstance[sidebarInstance.length-1].childNodes
+// 			displayMiniPalettes(test)
+// 	}

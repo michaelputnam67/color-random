@@ -99,7 +99,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	overflow-y: auto;
+	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
@@ -120,9 +120,9 @@
 }
 
 .mini__palette {
-	height: 70%;
+	height: 65%;
 	width: 15%;
-	border: 1px solid blue;
+	border: 1px solid black;
 }
 
 .mini__trashcan {
