@@ -111,7 +111,25 @@
 }
 
 .sidebar__new-instance {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	width: 100%;
 	height: 10%;
 	border: 2px dashed pink;
+}
+
+.mini__palette {
+	height: 70%;
+	width: 15%;
+	border: 1px solid blue;
+}
+
+.mini__trashcan {
+	height: 40%;
+	width: 8%;
+	content: url(./assets/images/trashcan.png)
+}
+.mini__trashcan:hover {
+	content: url(./assets/images/trashcan2.png)
 }
