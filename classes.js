@@ -16,8 +16,8 @@ class Color {
 }
 
 class Palette {
-	constructor() {
-		this.colors = [new Color(), new Color(), new Color(), new Color(), new Color()]
+	constructor(colors) {
+		this.colors = colors
 		this.id = Date.now();
 	}
 	makeLocked(id) {
@@ -26,4 +26,5 @@ class Palette {
 	makeUnlocked(id){
 		this.colors[id].locked = false;
 	}
+
 }
