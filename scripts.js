@@ -1,15 +1,15 @@
 //~~~~~~~~~~~~~~~~~~~~~~Query Selectors~~~~~~~~~~~~~~~~~~~~~~~~
-var newPalette = document.querySelector('.buttons__new-palette')
-var currentColors = document.querySelectorAll('.palettes__current')
-var displayedHexCode = document.querySelectorAll('.hex-code')
+var newPalette = document.querySelector('.buttons__new-palette');
+var currentColors = document.querySelectorAll('.palettes__current');
+var displayedHexCode = document.querySelectorAll('.hex-code');
 var paletteBox = document.querySelector('.palettes')
-var paletteId = document.querySelectorAll('.palettes__color')
-var lockImg = document.querySelectorAll('.lock')
-var savePaletteButton = document.querySelector('.buttons__save-palette')
-var sidebar = document.querySelector('.sidebar')
-var miniPalette = document.getElementsByClassName('mini__palette')
-var sidebarInstance = document.getElementsByClassName('sidebar__new-instance')
-var trashIcon = document.querySelector(".mini__trashcan")
+var paletteId = document.querySelectorAll('.palettes__color');
+var lockImg = document.querySelectorAll('.lock');
+var savePaletteButton = document.querySelector('.buttons__save-palette');
+var sidebar = document.querySelector('.sidebar');
+var miniPalette = document.getElementsByClassName('mini__palette');
+var sidebarInstance = document.getElementsByClassName('sidebar__new-instance');
+var trashIcon = document.querySelector(".mini__trashcan");
 
 //~~~~~~~~~~~~~~~~~~~~~~~Global Variables~~~~~~~~~~~~~~~~~~~~~~
 var currentPalette;
@@ -17,7 +17,7 @@ var savedPalettes = []
 var previousLockedColors = [null, null, null, null, null]
 
 //~~~~~~~~~~~~~~~~~~~~~~~~Event listeners~~~~~~~~~~~~~~~~~~~~~~
-window.addEventListener('load', newPaletteInstance)
+window.addEventListener('load', newPaletteInstance);
 
 sidebar.addEventListener('click', function(event){
 	deleteSaved(event)
@@ -116,3 +116,4 @@ function savePaletteToggle() {
 		savePaletteButton.disabled = false;
 	}
 }
+

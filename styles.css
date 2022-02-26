@@ -1,6 +1,6 @@
 * {
-	border: 2px dotted red;
 	font-family: 'Varela Round', sans-serif;
+	background-color: #fff5ee;
 }
 
 .body {
@@ -9,6 +9,7 @@
 	height: 100vh;
 	background: cover;
 	margin: 0;
+	overflow: hidden;
 }
 
 .main {
@@ -17,17 +18,14 @@
 	flex-direction: column;
 }
 
-.sidebar {
-	width: 20%;
-}
-
 .header {
 	height: 33%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 60pt;
-
+	color: #97d4ff;
+	text-shadow: 5px 5px 5px black;
 }
 
 .palettes {
@@ -51,6 +49,9 @@
 	width: 90%;
 	background-color: pink;
 	border:4px solid black;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px black;
 }
 
 .palettes__hex-key {
@@ -61,6 +62,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .lock{
@@ -68,7 +70,8 @@
 	height: 30px;
 	content: url(./assets/images/unlocked-lock.png);
 	margin: 5px;
-	}
+	cursor: pointer;
+}
 
 .main__buttons {
 	height: 33%;
@@ -83,8 +86,9 @@
 	height: 20%;
 	font-size: 20pt;
 	border-radius: 6px;
-	border: 2px solid red;
+	border: 1.5px solid black;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background-color: #eef8ff;
 }
 
 .buttons__new-palette:hover,
@@ -99,30 +103,35 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
+	width: 20%;
+	height: 100vh;
 }
 
 .sidebar__header {
-	font-size: 20pt;
+	font-size: 24pt;
 	width: 100%;
 	text-align: center;
-	border-bottom: 4px solid black;
+	color: #97d4ff;
+	text-shadow: 2px 3px 5px black;
+	/* -webkit-text-stroke: .1px black; */
 }
 
 .sidebar__new-instance {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 100%;
+	width: 95%;
 	height: 10%;
-	border: 2px dashed pink;
+	min-height: 10%;
 }
 
 .mini__palette {
-	height: 65%;
+	height: 60%;
 	width: 15%;
-	border: 1px solid black;
+	border: 2px solid black;
+	border-radius: 3px;
 }
 
 .mini__trashcan {
@@ -131,7 +140,8 @@
 	content: url(./assets/images/trashcan.png)
 }
 .mini__trashcan:hover {
-	content: url(./assets/images/trashcan2.png)
+	content: url(./assets/images/trashcan2.png);
+	cursor: pointer;
 }
 
 .hidden{
