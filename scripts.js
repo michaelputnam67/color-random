@@ -7,6 +7,7 @@ var lockImg = document.querySelectorAll('.lock');
 var savePaletteButton = document.querySelector('.buttons__save-palette');
 var sidebar = document.querySelector('.sidebar');
 var miniPalette = document.getElementsByClassName('mini__palette');
+var paletteColor = document.querySelector('.palettes__color')
 
 //~~~~~~~~~~~~~~~~~~~~~~~Global Variables~~~~~~~~~~~~~~~~~~~~~~
 var currentPalette;
@@ -56,8 +57,11 @@ function generateNewPalette() {
 }
 
 function locked(event){
-	var index = event.target.id
-	if (!index) return;
+	var index = parseInt(event.target.dataset.index);
+	console.log(index);
+	if (isNaN(index)) { 
+		//isNaN is a function that checks if the value is NaN. This is to get rid of the console errors when clicking outside the box
+		return };
 	if(!currentPalette.colors[index].locked){
 		currentPalette.makeLocked(index)
 		storeLockedPalettes()
