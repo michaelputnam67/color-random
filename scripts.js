@@ -2,14 +2,11 @@
 var newPalette = document.querySelector('.buttons__new-palette');
 var currentColors = document.querySelectorAll('.palettes__current');
 var displayedHexCode = document.querySelectorAll('.hex-code');
-var paletteBox = document.querySelector('.palettes')
-var paletteId = document.querySelectorAll('.palettes__color');
+var paletteBox = document.querySelector('.palettes');
 var lockImg = document.querySelectorAll('.lock');
 var savePaletteButton = document.querySelector('.buttons__save-palette');
 var sidebar = document.querySelector('.sidebar');
 var miniPalette = document.getElementsByClassName('mini__palette');
-var sidebarInstance = document.getElementsByClassName('sidebar__new-instance');
-var trashIcon = document.querySelector(".mini__trashcan");
 
 //~~~~~~~~~~~~~~~~~~~~~~~Global Variables~~~~~~~~~~~~~~~~~~~~~~
 var currentPalette;
@@ -116,4 +113,3 @@ function savePaletteToggle() {
 		savePaletteButton.disabled = false;
 	}
 }
-
