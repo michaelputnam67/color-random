@@ -58,9 +58,7 @@ function generateNewPalette() {
 
 function locked(event){
 	var index = parseInt(event.target.dataset.index);
-	console.log(index);
 	if (isNaN(index)) { 
-		//isNaN is a function that checks if the value is NaN. This is to get rid of the console errors when clicking outside the box
 		return };
 	if(!currentPalette.colors[index].locked){
 		currentPalette.makeLocked(index)
