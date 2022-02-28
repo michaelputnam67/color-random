@@ -1,5 +1,5 @@
 //~~~~~~~~~~~~~~~~~~~~~~Query Selectors~~~~~~~~~~~~~~~~~~~~~~~~
-var newPalette = document.querySelector('.buttons__new-palette');
+var newPaletteButton = document.querySelector('.buttons__new-palette');
 var currentColors = document.querySelectorAll('.palettes__current');
 var displayedHexCode = document.querySelectorAll('.hex-code');
 var paletteBox = document.querySelector('.palettes');
@@ -15,19 +15,19 @@ var savedPalettes = []
 var previousLockedColors = [null, null, null, null, null]
 
 //~~~~~~~~~~~~~~~~~~~~~~~~Event listeners~~~~~~~~~~~~~~~~~~~~~~
-window.addEventListener('load', newPaletteInstance);
+window.addEventListener('load', createNewPaletteInstance);
 
 sidebar.addEventListener('click', function(event){
 	deleteSaved(event)
 });
 
 paletteBox.addEventListener('click', function(event){
-	locked(event);
+	toggleLocked(event);
 });
 
-newPalette.addEventListener('click', function(){
-	newPaletteInstance();
-	savePaletteToggle();
+newPaletteButton.addEventListener('click', function(){
+	createNewPaletteInstance();
+	toggleSavedPaletteButton();
 })
 
 savePaletteButton.addEventListener('click', function() {
@@ -36,7 +36,7 @@ savePaletteButton.addEventListener('click', function() {
 })
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Functions~~~~~~~~~~~~~~~~~~~~~~~~~
-function newPaletteInstance() {
+function createNewPaletteInstance() {
 	var color1 =  previousLockedColors[0] || new Color();
 	var color2 =  previousLockedColors[1] || new Color();
 	var color3 =  previousLockedColors[2] || new Color();
@@ -56,10 +56,10 @@ function generateNewPalette() {
 	}
 }
 
-function locked(event){
+function toggleLocked(event){
 	var index = parseInt(event.target.dataset.index);
 	console.log(index);
-	if (isNaN(index)) { 
+	if (isNaN(index)) {
 		//isNaN is a function that checks if the value is NaN. This is to get rid of the console errors when clicking outside the box
 		return };
 	if(!currentPalette.colors[index].locked){
@@ -112,7 +112,7 @@ function deleteSaved(event){
 	}
 }
 
-function savePaletteToggle() {
+function toggleSavedPaletteButton() {
 	if(savePaletteButton.disabled) {
 		savePaletteButton.disabled = false;
 	}
